@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1670468229320.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2889584012",
+    "id" : "213132F9",
+    "lastKnownWriteTime" : 1670477469,
+    "last_content_update" : 1670477469830,
+    "path" : "~/scDrugHunter/R/scDH_circlize_plot.R",
+    "project_path" : "R/scDH_circlize_plot.R",
+    "properties" : {
+        "cursorPosition" : "13,19",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

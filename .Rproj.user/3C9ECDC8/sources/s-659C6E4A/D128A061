@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1670468116599.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D128A061",
+    "lastKnownWriteTime" : 1670477445,
+    "last_content_update" : 1670477445241,
+    "path" : "~/scDrugHunter/R/scDrugHunter-main.R",
+    "project_path" : "R/scDrugHunter-main.R",
+    "properties" : {
+        "cursorPosition" : "12,20",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

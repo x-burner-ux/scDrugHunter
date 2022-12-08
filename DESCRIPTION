@@ -1,0 +1,25 @@
+Package: scDrugHunter
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Yijun Zhou
+Maintainer: Yijun Zhou <767549250@qq.com>
+Description: Calculate single cell Drug Gene Score(scDGS) for candidate genes' drug-gene pairs based on DGIdb 2021.5 database
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10),
+    tidyverse
+Imports: 
+    circlize,
+    dplyr,
+    ggplot2,
+    ggradar
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3

@@ -1,0 +1,9 @@
+{
+    "path" : "~/scDrugHunter",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

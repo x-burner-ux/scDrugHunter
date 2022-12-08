@@ -1,0 +1,8 @@
+test_that("multiplication works", {
+  load("~/scDrugHunter/inst/extdata/seurat_test.rda")
+  test_candidate_genes <- readr::read_table("~/scDrugHunter/inst/extdata/test_candidate_genes.txt")
+  test_specificity <- readr::read_csv("~/scDrugHunter/inst/extdata/test_specificity.csv")
+
+
+  expect_identical(as.data.frame(Candidate_genes_specificity(exp = seurat_test,annotation = 'annotation2',candidate = test_candidate_genes,correlation = 'cor')),test_specificity )
+})
