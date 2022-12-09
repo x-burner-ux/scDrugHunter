@@ -21,7 +21,7 @@ scDH_circlize_plot <- function(DG_pairs, cell_type, top_g, top_d) {
     do(head(., n = top_d)) %>%
     ungroup() %>%
     arrange(-scDGS) %>%
-    select(gene, drug_name, radar_score)
+    select(gene, drug_name, scDGS)
   top_pairs <- top_pairs %>% mutate(scDGS = (scDGS - 1.01 * min(scDGS) + 0.01 * max(scDGS)) / (1.01 * (max(scDGS) - min(scDGS))))
 
 
