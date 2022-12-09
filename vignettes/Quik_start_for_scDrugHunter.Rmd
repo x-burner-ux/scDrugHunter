@@ -1,0 +1,91 @@
+---
+title: "Quik_start_for_scDrugHunter"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Quik_start_for_scDrugHunter}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Use scDGS function to calculate drug-gene pairs' DrugHunter score for candidate genes
+### Prepare input for scDGS
+```{r setup}
+library(scDrugHunter)
+```
+
+
+```{r}
+#Add test single-cell dataset.
+test_seurat <- scDrugHunter::test_seurat
+
+#Single cell input need cell type colname 'Cell_type' in meta.data and genes in 'gene_symbols' format
+test_seurat@meta.data$Cell_type <- test_seurat@meta.data$annotation2
+rownames(test_seurat@assays[['RNA']]@data) <- test_seurat@assays[["RNA"]]@meta.features[["gene_symbols"]]
+test_seurat
+```
+
+```{r}
+#Gene-trait correlation list need colnames 'gene' and 'cor'.
+test_cor <- scDrugHunter::test_cor
+colnames(test_cor) <- c('gene','cor')
+head(test_cor)
+```
+
+```{r}
+#eQTL-trait association significance need colnames 'gene' and 'pvalue'.
+test_pvalue <- scDrugHunter::test_pvalue
+head(test_pvalue)
+```
+
+```{r}
+#List of candidate genes to hunt drugs.
+test_genes <- scDrugHunter::test_candidate_genes$gene
+head(test_genes)
+```
+
+### Calculate scDGS
+```{r}
+#Calculate single-cell Drug Gene Scores(scDGS) for candidate genes.
+test_dg_pairs <- scDGS(seurat_obj = test_seurat, gene_cor = test_cor, gene_pvalue = test_pvalue, candidate = test_genes)
+head(test_dg_pairs)
+```
+The results is arranged by scDGS and content rank of four input message for candidate drug-gene pairs in each cell type.
+
+## Visualization
+### Use radar plot showing top pairs' scDGS rank in a specific cell type
+```{r,fig.width = 7, fig.height = 7}
+#Plot top 20 drug-gene pairs in endothelial cells.
+scDH_radar_plot(DG_pairs = test_dg_pairs, cell_type = 'Endothelial Cell', top = 20, unique_g = FALSE)
+```
+
+or you can unique the top genes in drug-gene pairs by set 'unique_g = TRUE'
+```{r,fig.width = 7, fig.height = 7}
+scDH_radar_plot(DG_pairs = test_dg_pairs, cell_type = 'Endothelial Cell', top = 20, unique_g = TRUE)
+```
+
+## Use circlize plot showing top pairs' scDGS in a specific cell type
+
+You can set the number of top genes by 'top_g' and top drugs for each gene by 'top_d' in the circle
+```{r,fig.width = 7, fig.height = 7}
+#Plot top 20 genes and top 3 drugs in endothelial cells.
+scDH_circlize_plot(DG_pairs = test_dg_pairs, cell_type = 'Endothelial Cell', top_g = 20,top_d = 3)
+```
+The colors for genes are random selected from 'rand_color()' function and the colors for drugs are set to 'grey'
+
+
+
+
+
+
+
+
+
+
+
