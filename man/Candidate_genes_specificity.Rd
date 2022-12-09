@@ -4,16 +4,12 @@
 \alias{Candidate_genes_specificity}
 \title{Candidate genes specificity}
 \usage{
-Candidate_genes_specificity(exp, annotation, candidate, correlation)
+Candidate_genes_specificity(exp, candidate)
 }
 \arguments{
 \item{exp}{A Seurat format single-cell expression matrix}
 
-\item{annotation}{Cell type annotation column names in seurat meta.data part}
-
-\item{candidate}{Candidate gene list}
-
-\item{correlation}{Correlation lists of genes and phenotypes with colnames 'gene' and 'cor'}
+\item{candidate}{Candidate gene and trait-relavent correlation list with colnames 'gene' and 'cor'}
 }
 \value{
 A list with specificity percent and the rank of specificity score and correlation for candidate genes

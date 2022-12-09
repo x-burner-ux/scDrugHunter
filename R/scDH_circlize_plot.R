@@ -1,8 +1,7 @@
 #' @title scDH_circlize_plot
 #' @description Plot the top drug-gene pairs' scDGS network in specific cell type
-#' @details Input scDH format results
-#' @param DG_pairs A list of scDH results
-#' @param annotation Cell type annotation column names in scDH results
+#' @details Input scDGS format results
+#' @param DG_pairs A list of scDGS results
 #' @param cell_type Candidate cell type
 #' @param top_g Number of top genes to be ploted in circlize
 #' @param top_d Number of top drugs for gene specific drug_gene pairs to be ploted in circlize
@@ -14,8 +13,8 @@
 #' @import circlize
 #' @author Yijun Zhou
 
-scDGS_circlize_plot <- function(DG_pairs, annotation, cell_type, top_g, top_d) {
-  sub_pairs <- DG_pairs %>% subset(!!ensym(annotation) == cell_type)
+scDH_circlize_plot <- function(DG_pairs, cell_type, top_g, top_d) {
+  sub_pairs <- DG_pairs %>% subset(Cell_type == cell_type)
   top_genes <- unique(sub_pairs$gene) %>% head(n = top_g)
   top_pairs <- subset(sub_pairs, gene %in% top_genes) %>%
     group_by(gene) %>%

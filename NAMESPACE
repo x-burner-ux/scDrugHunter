@@ -2,7 +2,7 @@
 
 export(Candidate_genes_specificity)
 export(scDGS)
-export(scDGS_circlize_plot)
+export(scDH_circlize_plot)
 export(scDH_radar_plot)
 import(circlize)
 import(dplyr)

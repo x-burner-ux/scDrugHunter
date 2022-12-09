@@ -13,21 +13,33 @@
 #' @import ggradar
 #' @author Yijun Zhou
 
-scDH_radar_plot <- function(DG_pairs, annotation, cell_type, top) {
+scDH_radar_plot <- function(DG_pairs,  cell_type, top,unique_g) {
+  if(unique_g){
   sub_pairs <- DG_pairs %>%
-    subset(!!ensym(annotation) == cell_type) %>%
+    subset(Cell_type == cell_type) %>%
+    group_by(gene) %>%
+    do(head(., n = 1)) %>%
+    ungroup() %>%
+    arrange(-scDGS)  %>%
     select(pair_name, scDGS) %>%
     head(n = top)
+
+  }else{
+  sub_pairs <- DG_pairs %>%
+    subset(Cell_type == cell_type) %>%
+    select(pair_name, scDGS) %>%
+    head(n = top)
+  }
   sub_pairs[, -1] <- sapply(sub_pairs[, -1], as.numeric)
   rank_pairs <- sub_pairs %>%
     mutate(scDGS_rank = rank(scDGS)) %>%
     select(pair_name, scDGS_rank)
   top_pairs <- rank_pairs$pair_name
-  top_pairs <- as.data.frame(t(top_pairs[, 2]))
-  colnames(top_pairs) <- top_pairs
+  rank_pairs <- as.data.frame(t(rank_pairs[, 2]))
+  colnames(rank_pairs) <- top_pairs
   v1_name <- glue::glue("{cell_type}_top{top}_scDGS")
-  top_pairs <- cbind(v1_name, top_pairs)
-  p <- ggradar(top_pairs,
+  rank_pairs <- cbind(v1_name, rank_pairs)
+  p <- ggradar(rank_pairs,
     grid.min = 0,
     grid.mid = 0.5 * top,
     grid.max = top

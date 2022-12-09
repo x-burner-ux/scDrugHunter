@@ -4,18 +4,16 @@
 \alias{scDGS}
 \title{Single Cell Drug Hunter}
 \usage{
-scDGS(seurat_obj, gene_cor, gene_pvalue, candidate, annotation)
+scDGS(seurat_obj, gene_cor, gene_pvalue, candidate)
 }
 \arguments{
-\item{seurat_obj}{A Seurat format single-cell expression matrix}
+\item{seurat_obj}{A Seurat format single-cell expression matrix with 'Cell_type' colname in meta.data}
 
 \item{gene_cor}{Correlation lists of genes and phenotypes with colnames 'gene' and 'cor'}
 
 \item{gene_pvalue}{P-value lists of genes and phenotypes with colnames 'gene' and 'pvalue'}
 
 \item{candidate}{Candidate gene list}
-
-\item{annotation}{Cell type annotation column names in seurat meta.data part}
 }
 \value{
 A list with scDGS and the rank of specificity score, correlation, drug-gene interaction and pvalue for candidate drug-gene pairs

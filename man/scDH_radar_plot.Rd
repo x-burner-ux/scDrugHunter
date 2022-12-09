@@ -4,16 +4,16 @@
 \alias{scDH_radar_plot}
 \title{scDH_radar_plot}
 \usage{
-scDH_radar_plot(DG_pairs, annotation, cell_type, top)
+scDH_radar_plot(DG_pairs, cell_type, top, unique_g)
 }
 \arguments{
 \item{DG_pairs}{A list of scDH results}
 
-\item{annotation}{Cell type annotation column names in scDH results}
-
 \item{cell_type}{Candidate cell type}
 
 \item{top}{Number of top pairs to be ploted in radar chart}
+
+\item{annotation}{Cell type annotation column names in scDH results}
 }
 \value{
 A radar chart for top n drug-gene pairs in candidate cell type
