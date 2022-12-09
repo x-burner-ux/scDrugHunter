@@ -29,5 +29,5 @@ devtools::install_github("x-burner-ux/scDrugHunter")
 ## Tutorials
 
 scDrugHunter provides a tutorial
-[Quik\_start\_for\_scDrugHunter](http://htmlpreview.github.io/?https://github.com/x-burner-ux/x-burner-ux.github.io/blob/main/scDrugHunter/article/Quik_start_for_scDrugHunter.html)
+[Quik\_start\_for\_scDrugHunter](https://github.com/x-burner-ux/x-burner-ux.github.io/blob/main/scDrugHunter/article/Quik_start_for_scDrugHunter.html)
 with quick example. Please also visit the documentation.
