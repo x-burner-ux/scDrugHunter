@@ -32,7 +32,7 @@ scDGS <- function(seurat_obj, gene_cor, gene_pvalue,candidate){
   ###3.Link candaidate gene and DGIdb database.
   ############################
   pairs <- inner_join(cts,gene_drug_pairs,by = c('gene'))
-  pairs$pvalue <- gene_pvalue$pvalue[match(pairs$gene,gene_pvalue$gene_name)]
+  pairs$pvalue <- gene_pvalue$pvalue[match(pairs$gene,gene_pvalue$gene)]
 
   #############################
   ###4.Calcualate drug-gene interaction rank, genes-trait significance rank and scDGS.
