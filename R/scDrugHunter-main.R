@@ -40,9 +40,8 @@ scDGS <- function(seurat_obj, gene_cor, gene_pvalue,candidate){
   pairs <- pairs %>% group_by(Cell_type) %>%
     mutate(pair_name = paste(gene,drug_name,sep = '_')) %>%
     distinct() %>%
-    mutate(interaction_rank=rank(desc(interaction_group_score))*10/length(interaction_group_score)) %>%
-    mutate(log_pvalue=-log(pvalue)) %>%
-    mutate(pvalue_rank=rank(desc(log_pvalue))*10/length(log_pvalue)) %>%
+    mutate(interaction_rank=rank(interaction_group_score)*10/length(interaction_group_score)) %>%
+    mutate(pvalue_rank=rank(desc(pvalue))*10/length(pvalue)) %>%
     mutate(scDGS = 0.5*(specificity_rank*pvalue_rank+specificity_rank*interaction_rank+correlation_rank*interaction_rank+correlation_rank*pvalue_rank)) %>%
     select(gene, drug_name, pair_name, specificity_rank, correlation_rank, interaction_rank, pvalue_rank,scDGS) %>%
     ungroup()
